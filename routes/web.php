@@ -13,23 +13,35 @@
 |
 */
 
-$router->get('/', function () use ($router) {
-    return $router->app->version();
+// $router->get('/', function () use ($router) {
+//     return $router->app->version();
+// });
+
+$router->group(['middleware' => 'client.credentials'], function() use($router){
+    
+    
+    
+    // $router->get('/login', 'LoginController@login'); 
+    // $router->post('/result', 'LoginController@result'); 
+    
+    $router->get('/users1', 'User1Controller@show');    //get all users records
+    $router->post('/users1', 'User1Controller@add');  //create new user
+    $router->get('/users1/{id}', 'User1Controller@index');   //get user id
+    $router->put('/users1/{id}', 'User1Controller@update');   //update user
+    $router->patch('/users1/{id}', 'User1Controller@update');   //update user
+    $router->delete('/users1/{id}', 'User1Controller@delete');  //delete
+    
+    $router->get('/users2', 'User2Controller@show');    //get all users records
+    $router->post('/users2', 'User2Controller@add');  //create new user
+    $router->get('/users2/{id}', 'User2Controller@index');   //get user id
+    $router->put('/users2/{id}', 'User2Controller@update');   //update user
+    $router->patch('/users2/{id}', 'User2Controller@update');   //update user
+    $router->delete('/users2/{id}', 'User2Controller@delete');  //delete
+    
 });
 
-$router->get('/login', 'LoginController@login'); 
-$router->post('/result', 'LoginController@result'); 
 
-$router->get('/users1', 'User1Controller@show');    //get all users records
-$router->post('/users1', 'User1Controller@add');  //create new user
-$router->get('/users1/{id}', 'User1Controller@index');   //get user id
-$router->put('/users1/{id}', 'User1Controller@update');   //update user
-$router->patch('/users1/{id}', 'User1Controller@update');   //update user
-$router->delete('/users1/{id}', 'User1Controller@delete');  //delete
-
-$router->get('/users2', 'User2Controller@show');    //get all users records
-$router->post('/users2', 'User2Controller@add');  //create new user
-$router->get('/users2/{id}', 'User2Controller@index');   //get user id
-$router->put('/users2/{id}', 'User2Controller@update');   //update user
-$router->patch('/users2/{id}', 'User2Controller@update');   //update user
-$router->delete('/users2/{id}', 'User2Controller@delete');  //delete
+//Client
+// grant_type       client_credentials
+//client_id         2
+//client_secret     eaOMcSDVqwEJO0pTWnRtUZ0dS4ylPBRLf5xU648K
